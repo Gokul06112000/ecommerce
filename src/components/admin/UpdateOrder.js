@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "./Sidebar";
 import { Fragment, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link,useNavigate,useParams } from "react-router-dom";
 import{toast} from "react-toastify"; 
 import { updateOrder,orderDetail as orderDetailAction } from "../../actions/orderActions";
 import { clearOrderUpdated,clearError } from "../../slices/orderSlice";
@@ -14,8 +14,8 @@ export default function UpdateOrder(){
     const isPaid = paymentInfo?.status ==='succeeded'? true: false;
     const[orderStatus,setOrderStatus] = useState("Processing");
     const {id:orderId} = useParams();
-    const navigate = useNavigate();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const submitHandler=(e) =>{
         e.preventDefault();
         const orderData = {};
@@ -60,8 +60,8 @@ export default function UpdateOrder(){
 
             <h4 className="mb-4">Shipping Info</h4>
             <p><b>Name:</b> {user.name}</p>
-            <p><b>Phone:</b> {shippingInfo.phoneNo}</p>
-            <p className="mb-4"><b>Address:</b>{shippingInfo.address},{shippingInfo.city},{shippingInfo.postalCode},{shippingInfo.state},{shippingInfo.country}</p>
+            <p><b>Phone:</b> {shippingInfo?.phoneNo}</p>
+            <p className="mb-4"><b>Address:</b>{shippingInfo?.address},{shippingInfo?.city},{shippingInfo?.postalCode},{shippingInfo?.state},{shippingInfo?.country}</p>
             <p><b>Amount:</b> ${totalPrice}</p>
 
             <hr />

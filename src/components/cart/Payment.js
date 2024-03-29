@@ -20,17 +20,17 @@ export default function Payment(){
     const{items:cartItems,shippingInfo} = useSelector(state => state.cartState)
     const{error:orderError} = useSelector(state => state.orderState)
     const paymentData = {
-        amount : Math.round( orderInfo.totalPrice * 100),
+        amount : Math.round( orderInfo?.totalPrice * 100),
         shipping :{
             name: user.name,
             address:{
-                city: shippingInfo.city,
-                postal_code : shippingInfo.postalCode,
-                country: shippingInfo.country,
-                state: shippingInfo.state,
-                line1 : shippingInfo.address
+                city: shippingInfo?.city,
+                postal_code : shippingInfo?.postalCode,
+                country: shippingInfo?.country,
+                state: shippingInfo?.state,
+                line1 : shippingInfo?.address
             },
-            phone: shippingInfo.phoneNo
+            phone: shippingInfo?.phoneNo
         }
     }
     const order = {
@@ -38,10 +38,10 @@ export default function Payment(){
         shippingInfo
     }
     if(orderInfo){
-        order.itemsPrice = orderInfo.itemsPrice
-        order.shippingPrice = orderInfo.shippingPrice
-        order.taxPrice = orderInfo.taxPrice
-        order.totalPrice = orderInfo.totalPrice
+        order.itemsPrice = orderInfo?.itemsPrice
+        order.shippingPrice = orderInfo?.shippingPrice
+        order.taxPrice = orderInfo?.taxPrice
+        order.totalPrice = orderInfo?.totalPrice
     }
     useEffect(()=>{
         validateShipping(shippingInfo,navigate)
@@ -142,7 +142,7 @@ export default function Payment(){
                   type="submit"
                   className="btn btn-block py-3"
                 >
-                  Pay{ `$${orderInfo && orderInfo.totalPrice}`}
+                  Pay{ `$${orderInfo && orderInfo?.totalPrice}`}
                 </button>
     
               </form>
